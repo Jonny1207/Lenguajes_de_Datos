@@ -1,0 +1,382 @@
+--DROP TABLE P8040 CASCADE CONSTRAINTS;
+CREATE TABLE Cliente(
+Cedula NUMERIC (9,0) NOT NULL ,  
+Nombre VARCHAR2 (20) NOT NULL ,  
+Apellido1 VARCHAR2 (20) NOT NULL ,  
+Apellido2 VARCHAR2 (20) ,
+Telefono NUMERIC (8,0) NOT NULL,
+CorreoElectronico VARCHAR2 (30),
+Provincia VARCHAR2 (20) NOT NULL ,  
+Canton VARCHAR2 (20) NOT NULL ,  
+Distrito VARCHAR2 (20) NOT NULL ,  
+Direccion VARCHAR2 (100) NOT NULL ,  
+CONSTRAINT PK_ID PRIMARY KEY (Cedula)
+);
+
+CREATE TABLE Vidrio(
+CodigoColor NUMERIC(9,0) NOT NULL,
+Color VARCHAR2 (20),
+Precio_Metrocuadrado NUMERIC (10,2),
+CONSTRAINT PK_CC PRIMARY KEY (CodigoColor)
+);
+
+CREATE TABLE Empaque (
+CodigoEmpaque NUMERIC(9,0) NOT NULL,
+Precio_Metrolineal NUMERIC (10,2) NOT NULL,
+CONSTRAINT PK_CE PRIMARY KEY (CodigoEmpaque )
+);
+
+CREATE TABLE V5020(
+Codigo_5020 NUMERIC(9,0) NOT NULL,
+Lateral_llavin_5020 NUMERIC(9,2) NOT NULL,
+Lateral_enganche_5020 NUMERIC(9,2) NOT NULL,
+Superior_Hoja_5020 NUMERIC(9,2) NOT NULL,
+Inferior_Hoja_5020 NUMERIC(9,2) NOT NULL,
+Jamba_5020 NUMERIC(9,2) NOT NULL,
+Superior_ContraMarco_5020 NUMERIC(9,2) NOT NULL,
+Inferior_ContraMarco_5020 NUMERIC(9,2) NOT NULL,
+CONSTRAINT PK_C5020 PRIMARY KEY (Codigo_5020)
+);
+
+CREATE TABLE V6030(
+Codigo_6030 NUMERIC(9,0) NOT NULL,
+Lateral_6030 NUMERIC(9,2) NOT NULL,
+Lateral_enganche_6030 NUMERIC(9,2) NOT NULL,
+ContraMarco_6030 NUMERIC(9,2) NOT NULL,
+Inferior_ContraMarco_6030 NUMERIC(9,2) NOT NULL,
+CONSTRAINT PK_C6030 PRIMARY KEY (Codigo_6030)
+);
+
+CREATE TABLE P8025(
+Codigo_8025 NUMERIC(9,0) NOT NULL,
+Lateral_llavin_8025 NUMERIC(9,2) NOT NULL,
+Lateral_enganche_8025 NUMERIC(9,2) NOT NULL,
+Superior_Hoja_8025 NUMERIC(9,2) NOT NULL,
+Inferior_Hoja_8025 NUMERIC(9,2) NOT NULL,
+Jamba_8025 NUMERIC(9,2) NOT NULL,
+Superior_ContraMarco_8025 NUMERIC(9,2) NOT NULL,
+Inferior_ContraMarco_8025 NUMERIC(9,2) NOT NULL,
+CONSTRAINT PK_C8025 PRIMARY KEY (Codigo_8025)
+);
+
+CREATE TABLE P8040(
+Codigo_8040 NUMERIC(9,0) NOT NULL,
+Lateral_8040 NUMERIC(9,2) NOT NULL,
+Lateral_enganche_8040 NUMERIC(9,2) NOT NULL,
+ContraMarco_8040 NUMERIC(9,2) NOT NULL,
+Inferior_ContraMarco_8040  NUMERIC(9,2) NOT NULL,
+CONSTRAINT PK_C8040 PRIMARY KEY (Codigo_8040)
+);
+
+CREATE TABLE RODIN(
+Codigo_Rodin NUMERIC(9,0) NOT NULL,
+Valor NUMERIC(9,2) NOT NULL,
+Descripcion VARCHAR2(100) NOT NULL,
+CONSTRAINT PK_CRodin PRIMARY KEY (Codigo_Rodin)
+);
+
+CREATE TABLE LLAVIN (
+Codigo_Llavin NUMERIC(9,0) NOT NULL,
+Valor NUMERIC(9,2) NOT NULL,
+Descripcion VARCHAR2(100) NOT NULL,
+CONSTRAINT PK_CLlavin PRIMARY KEY (Codigo_Llavin)
+);
+
+INSERT INTO Cliente 
+(Cedula, Nombre, Apellido1, Apellido2, Telefono, CorreoElectronico, Provincia, Canton, Distrito, Direccion) 
+VALUES 
+(117480446, 'Jonathan', 'Herrera', NULL, 85346460, 'jherrera80446@ufide.ac.cr', 
+'Heredia', 'San Rafael', 'Concepcion', '200 Oeste y 100 Norte del Abastecedor Camacho');
+
+
+INSERT INTO Vidrio (CodigoColor, Color, Precio_Metrocuadrado) VALUES ('01', 'Transparente', '10000');
+INSERT INTO Vidrio (CodigoColor, Color, Precio_Metrocuadrado) VALUES ('02', 'Bronce',       '10500');
+INSERT INTO Vidrio (CodigoColor, Color, Precio_Metrocuadrado) VALUES ('03', 'Gris',         '13500');
+
+INSERT INTO Empaque(CodigoEmpaque,Precio_Metrolineal) VALUES ('01', '300');
+INSERT INTO Empaque(CodigoEmpaque,Precio_Metrolineal) VALUES ('02', '600');
+
+INSERT INTO V5020
+(Codigo_5020, Lateral_llavin_5020, Lateral_enganche_5020, Superior_Hoja_5020,
+Inferior_Hoja_5020, Jamba_5020, Superior_ContraMarco_5020, Inferior_ContraMarco_5020)
+VALUES
+('01', '1800','1300','500', '700','900','1850','1700');
+
+INSERT INTO V6030
+(Codigo_6030, Lateral_6030, Lateral_enganche_6030, ContraMarco_6030, Inferior_ContraMarco_6030) 
+VALUES 
+('01', '2100', '2300', '3000', '3400');
+
+INSERT INTO P8025
+(Codigo_8025, Lateral_llavin_8025, Lateral_enganche_8025 ,Superior_Hoja_8025 ,
+ Inferior_Hoja_8025 ,Jamba_8025 ,Superior_ContraMarco_8025 ,Inferior_ContraMarco_8025)
+VALUES
+('01', '1950','1500','700', '900','1200','2000','1850');
+
+INSERT INTO P8040 
+(Codigo_8040, Lateral_8040 ,Lateral_enganche_8040 ,ContraMarco_8040 ,Inferior_ContraMarco_8040)
+VALUES
+('01', '2300' ,'2400' , '3400', '3600');
+
+INSERT INTO RODIN (Codigo_Rodin, Valor ,Descripcion)  VALUES('01', '400' , 'Valido SOLO para ventanas 5020'); 
+INSERT INTO RODIN (Codigo_Rodin, Valor ,Descripcion)  VALUES('02', '500' , 'Valido SOLO para ventanas 6030'); 
+INSERT INTO RODIN (Codigo_Rodin, Valor ,Descripcion)  VALUES('03', '800' , 'Valido SOLO para portones 8025'); 
+INSERT INTO RODIN (Codigo_Rodin, Valor ,Descripcion)  VALUES('04', '1000' , 'Valido SOLO para portones 8040'); 
+
+INSERT INTO LLAVIN (Codigo_Llavin, Valor ,Descripcion) VALUES ('01', '800' , 'Valido SOLO para ventanas');
+INSERT INTO LLAVIN (Codigo_Llavin, Valor ,Descripcion) VALUES ('02', '1000' , 'Valido SOLO para portones');
+
+
+SELECT * FROM VIDRIO;
+
+-------------------------------------------------------------------------------
+-----------------------------------EDUARDO-------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+                                    --PA, Ventana 5020--
+------------------------------------------------------------------------------------------------------------------------
+
+create or replace procedure U_V5020(codigo in number, Nuevo_Valor in number, p_confirma out varchar2)
+as
+--- variables
+    v_confirma varchar(50);
+    
+begin
+    update V5020
+    set Jamba_5020 = Nuevo_Valor
+    where codigo = Codigo_5020;
+    v_confirma := ' se ha actualizado.';
+    p_confirma := 'Ventana 5020 #'|| codigo || v_confirma;
+end;
+
+----- codigo anonimo para probar el procedure
+declare
+    v_confirmacion varchar2(100);
+begin
+    U_V5020(1, 1000, v_confirmacion);
+    dbms_output.put_line( v_confirmacion );
+end;
+
+
+------------------------------------------------------------------------------------------------------------------------
+                                    --PA, Ventana 6030--
+------------------------------------------------------------------------------------------------------------------------
+
+create or replace procedure U_V6030(codigo in number, NV1 in number, NV2 in number, p_confirma out varchar2)
+as
+    v_confirma varchar(50);
+begin
+    update V6030
+    set ContraMarco_6030 = NV1, Inferior_ContraMarco_6030 = NV2 
+    where codigo = Codigo_6030;
+    v_confirma := ' se ha actualizado.';
+    p_confirma := 'Ventana 6030 #'|| codigo || v_confirma;
+end;
+
+----- codigo anonimo para probar el procedure
+declare
+    v_confirmacion varchar2(100);
+begin
+    U_V6030(1, 3500, 4000, v_confirmacion);
+    dbms_output.put_line( v_confirmacion );
+end;
+
+                                    --PQUETE CLIENTE--
+------------------------------------------------------------------------------------------------------------------------
+
+--cabecera--
+create or replace package pk_Cliente
+is
+function change_TP(V_TP number) return number;
+end;
+--cuerpo del paquete--
+create or replace package body pk_Cliente
+is
+function change_TP(V_TP number)
+return number
+is
+telephone number := V_TP;
+begin
+update Cliente
+set Telefono = V_TP
+where Nombre = 'Jonathan';
+return telephone;
+end;
+end;
+
+
+
+
+---------------------------------------------------------------------------------
+declare
+resultado number;
+begin
+resultado := pk_Cliente.change_TP(100);
+dbms_output.put_line('El nuevo telefono es '||resultado);
+end;
+
+
+
+select * from Cliente;
+-------------------------------------------------------------------------------
+-----------------------------------JONATHAN------------------------------------
+---------------------------------UPDATE P8025----------------------------------
+CREATE OR REPLACE PROCEDURE U_P8025(codigo IN NUMBER, Nuevo_Valor IN NUMBER, p_confirmacion OUT VARCHAR2)
+AS
+--- variables
+    v_confirma VARCHAR2(50);
+    
+BEGIN
+    UPDATE P8025
+    SET LATERAL_LLAVIN_8025 = Nuevo_Valor
+    WHERE codigo = Codigo_8025;
+    p_confirmacion := 'El precio es: '|| Nuevo_Valor || ' actualizado';
+END;
+
+--SELECT LATERAL_LLAVIN_8025 FROM P8025;
+----- codigo anonimo para probar el procedure
+DECLARE
+    v_confirma VARCHAR2(100);
+BEGIN
+    U_P8025(1, 1000, v_confirma);
+    dbms_output.put_line( v_confirma );
+END;
+
+---------------------------------UPDATE P8040----------------------------------
+CREATE OR REPLACE PROCEDURE U_P8040(codigo IN NUMBER, Nuevo_Valor IN NUMBER, p_confirmacion OUT VARCHAR2)
+AS
+--- variables
+    v_confirma VARCHAR2(50);
+    
+BEGIN
+    UPDATE P8040
+    SET CONTRAMARCO_8040= Nuevo_Valor
+    WHERE codigo = Codigo_8040;
+    p_confirmacion := 'El precio es: '|| Nuevo_Valor || ' actualizado';
+END;
+--SELECT LATERAL_LLAVIN_8025 FROM P8025;
+----- codigo anonimo para probar el procedure
+DECLARE
+    v_confirma VARCHAR2(100);
+BEGIN
+    U_P8040(1, 7500, v_confirma);
+    dbms_output.put_line( v_confirma );
+END
+
+---------------------VISTA MATERIALISADA-----------------------------
+CREATE MATERIALIZED VIEW vCliente  
+    BUILD IMMEDIATE
+       REFRESH START WITH SYSDATE NEXT (SYSDATE + 1) + 6 / 24 AS
+            SELECT * FROM CLIENTE;
+-------------------------------TRIGGER ------------------------------
+
+CREATE OR REPLACE TRIGGER tVidrio
+AFTER UPDATE  ON Vidrio
+
+DECLARE
+   v_username varchar2(10);
+
+BEGIN
+
+   -- Find username of person performing UPDATE into table
+   SELECT user INTO v_username
+   FROM dual;
+
+END;
+
+/**/UPDATE VIDRIO
+SET column1 = expression1,
+    column2 = expression2,
+    ...
+    column_n = expression_n
+WHERE CODIGOCOLOR = 1;
+
+-------------------------------------------------------------------------------
+-------------------------------------SEBAS-------------------------------------
+---Procedimiento almacenado, Empaque
+------------------------------------------------------------------------------------------------------------------------
+create or replace procedure update_Empaque(codigo in number, nuevovalor in number, p_confirmacion out varchar2)
+as
+--- variables
+    v_confirmacion varchar(50);
+    
+begin
+    update Empaque
+    set Precio_Metrolineal = nuevovalor
+    where codigo = CodigoEmpaque;
+    p_confirmacion := 'Empaque '|| codigo || ' actualizado';
+end;
+
+----- codigo anonimo para probar el procedure
+declare
+    v_confirmacion varchar2(100);
+begin
+    update_Empaque(1, 1500, v_confirmacion);
+    dbms_output.put_line( v_confirmacion );
+end;
+
+------------------------------------------------------------------------------------------------------------------------
+                                    --Procedimiento almacenado, Rodin
+------------------------------------------------------------------------------------------------------------------------
+
+create or replace procedure update_Rodin(codigo in number, nuevovalor in number, p_confirmacion out varchar2)
+as
+--- variables
+    v_confirmacion varchar(50);
+    
+begin
+    update Rodin
+    set Valor = nuevovalor
+    where codigo = Codigo_Rodin;
+    p_confirmacion := 'Rodin '|| codigo || ' actualizado';
+end;
+
+----- codigo anonimo para probar el procedure
+declare
+    v_confirmacion varchar2(100);
+begin
+    update_Rodin(1, 2000, v_confirmacion);
+    dbms_output.put_line( v_confirmacion );
+end;
+
+------------------------------------------------------------------------------------------------------------------------
+                                    --Procedimiento almacenado, Llavin
+------------------------------------------------------------------------------------------------------------------------
+
+create or replace procedure update_Llavin(codigo in number, nuevovalor in number, p_confirmacion out varchar2)
+as
+--- variables
+    v_confirmacion varchar2(100);
+    
+begin
+    update LLAVIN
+    set Valor = nuevovalor
+    where codigo = CODIGO_LLAVIN;
+    p_confirmacion := 'Llavin '|| codigo || ' actualizado';
+end;
+
+----- codigo anonimo para probar el procedure
+declare
+    v_confirmacion varchar2(100);
+begin
+    update_Llavin(1, 2500, v_confirmacion);
+    dbms_output.put_line( v_confirmacion );
+end;
+
+
+--------------------------------------------------------------------------------
+------------------------------------CURSOR--------------------------------------
+declare
+--definicion del cursor--
+cursor c_cliente is select Nombre, Apellido1 from Cliente;
+v_nombre varchar(100);
+v_apellido varchar(100);
+
+begin
+
+open c_cliente;
+fetch c_cliente into v_nombre, v_apellido;
+while(c_cliente%found) loop
+dbms_output.put_line('Nombre del cliente: ' || v_nombre || ' '|| v_apellido);
+fetch c_cliente into v_nombre, v_apellido;
+end loop;
+end;
